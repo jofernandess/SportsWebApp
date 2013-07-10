@@ -47,7 +47,7 @@ public class MemberRegistration {
       emptyFields();
    }
    /**
-    * Empty filds from bean
+    * Empty fields from bean
     */
    private void emptyFields() {
 	
