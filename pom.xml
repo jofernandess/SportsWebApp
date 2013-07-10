@@ -12,6 +12,10 @@
 	<description>A starter Java EE 6 webapp project for use on JBoss AS 7, generated from the jboss-javaee6-webapp archetype</description>
 
 	<properties>
+
+		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring-security.version>3.0.5.RELEASE</spring-security.version>
+
 		<!-- Explicitly declaring the source encoding eliminates the following 
 			message: -->
 		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
@@ -121,7 +125,7 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.0.1.Final</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-search</artifactId>
@@ -144,6 +148,32 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- ============================== -->
+		<!-- Barebones Spring MVC: Security -->
+		<!-- ============================== -->
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>1.2</version>
+		</dependency>
+
 		<!-- Needed for running tests (you may also use TestNG) -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -162,17 +192,6 @@
 			<scope>test</scope>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>mysql</groupId> -->
-<!-- 			<artifactId>mysql-connector-java</artifactId> -->
-<!-- 			<version>5.1.25</version> -->
-<!-- 		</dependency> -->
-
-
-		<!-- <dependency> -->
-		<!-- <groupId>servlet</groupId> -->
-		<!-- <artifactId></artifactId> -->
-		<!-- </dependency> -->
 	</dependencies>
 
 	<build>
