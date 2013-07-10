@@ -39,8 +39,6 @@
          <p>
             <h:commandButton id="register"
                action="#{memberRegistration.register}" value="Register" />
-               <h:commandButton id="registerSport"
-               action="#{sportRegistration.register}" value="Register Sport" />
             <h:outputText value=" Registered!"
                rendered="#{facesContext.postback and empty facesContext.messageList}"
                style="color: green;" />

@@ -44,9 +44,19 @@ public class MemberRegistration {
       em.persist(newMember);
       memberEventSrc.fire(newMember);
       initNewMember();
+      emptyFields();
    }
+   /**
+    * Empty filds from bean
+    */
+   private void emptyFields() {
+	
+	newMember.setEmail(null);
+	newMember.setName(null);
+	newMember.setPhoneNumber(null);
+}
 
-   @PostConstruct
+@PostConstruct
    public void initNewMember() {
       newMember = new Member();
    }
