@@ -5,17 +5,17 @@
         http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
 
    <!-- Uncomment to have test archives exported to the file system for inspection -->
-<!--    <engine>  -->
-<!--       <property name="deploymentExportPath">target/</property>  -->
-<!--    </engine> -->
+   <engine> 
+      <property name="deploymentExportPath">target/</property> 
+   </engine>
 
    <!-- Example configuration for a remote JBoss AS 7 instance -->
-   <container qualifier="jboss" default="true">
+   <container qualifier="jboss-as-7.1.1Final" default="true">
       <protocol type="jmx-as7">
          <property name="executionType">REMOTE</property>
       </protocol>
       <configuration>
-         <property name="jbossHome">/path/to/jboss/as</property>
+         <property name="jbossHome">$JBOSS_HOME</property>
       </configuration>
    </container>
 
