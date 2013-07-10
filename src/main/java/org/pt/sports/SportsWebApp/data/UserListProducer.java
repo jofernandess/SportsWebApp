@@ -1,6 +1,6 @@
 package org.pt.sports.SportsWebApp.data;
 
-import org.pt.sports.SportsWebApp.model.Member;
+import org.pt.sports.SportsWebApp.model.User;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -16,33 +16,33 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 @RequestScoped
-public class MemberListProducer {
+public class UserListProducer {
    @Inject
    private EntityManager em;
 
-   private List<Member> members;
+   private List<User> users;
 
    // @Named provides access the return value via the EL variable name "members" in the UI (e.g.,
    // Facelets or JSP view)
    @Produces
    @Named
-   public List<Member> getMembers() {
-      return members;
+   public List<User> getUsers() {
+      return users;
    }
 
-   public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final Member member) {
-      retrieveAllMembersOrderedByName();
+   public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final User user) {
+      retrieveAllUsersOrderedByName();
    }
 
    @PostConstruct
-   public void retrieveAllMembersOrderedByName() {
+   public void retrieveAllUsersOrderedByName() {
       CriteriaBuilder cb = em.getCriteriaBuilder();
-      CriteriaQuery<Member> criteria = cb.createQuery(Member.class);
-      Root<Member> member = criteria.from(Member.class);
+      CriteriaQuery<User> criteria = cb.createQuery(User.class);
+      Root<User> user = criteria.from(User.class);
       // Swap criteria statements if you would like to try out type-safe criteria queries, a new
       // feature in JPA 2.0
       // criteria.select(member).orderBy(cb.asc(member.get(Member_.name)));
-      criteria.select(member).orderBy(cb.asc(member.get("name")));
-      members = em.createQuery(criteria).getResultList();
+      criteria.select(user).orderBy(cb.asc(user.get("name")));
+      users = em.createQuery(criteria).getResultList();
    }
 }

@@ -15,35 +15,36 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.pt.sports.SportsWebApp.controller.MemberRegistration;
-import org.pt.sports.SportsWebApp.model.Member;
+import org.pt.sports.SportsWebApp.controller.UserRegistration;
+import org.pt.sports.SportsWebApp.model.User;
 import org.pt.sports.SportsWebApp.util.Resources;
 
 @RunWith(Arquillian.class)
-public class MemberRegistrationTest {
+public class UserRegistrationTest {
    @Deployment
    public static Archive<?> createTestArchive() {
       return ShrinkWrap.create(WebArchive.class, "test.war")
-            .addClasses(Member.class, MemberRegistration.class, Resources.class)
+            .addClasses(User.class, UserRegistration.class, Resources.class)
             .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
    }
 
    @Inject
-   MemberRegistration memberRegistration;
+   UserRegistration userRegistration;
 
    @Inject
    Logger log;
 
    @Test
    public void testRegister() throws Exception {
-      Member newMember = memberRegistration.getNewMember();
-      newMember.setName("Jane Doe");
-      newMember.setEmail("jane@mailinator.com");
-      newMember.setPhoneNumber("2125551234");
-      memberRegistration.register();
-      assertNotNull(newMember.getId());
-      log.info(newMember.getName() + " was persisted with id " + newMember.getId());
+      User newUser = userRegistration.getNewUser();
+      newUser.setName("Jane Doe");
+      newUser.setEmail("jane@mailinator.com");
+      newUser.setPhoneNumber("2125551234");
+      newUser.setPassword("123da123A13f");
+      userRegistration.register();
+      assertNotNull(newUser.getId());
+      log.info(newUser.getName() + " was persisted with id " + newUser.getId());
    }
    
 }
