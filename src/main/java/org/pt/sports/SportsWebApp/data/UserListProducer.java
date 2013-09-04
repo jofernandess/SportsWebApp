@@ -22,7 +22,7 @@ public class UserListProducer {
 
    private List<User> users;
 
-   // @Named provides access the return value via the EL variable name "members" in the UI (e.g.,
+   // @Named provides access the return value via the EL variable name "users" in the UI (e.g.,
    // Facelets or JSP view)
    @Produces
    @Named
@@ -30,7 +30,7 @@ public class UserListProducer {
       return users;
    }
 
-   public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final User user) {
+   public void onUserListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final User user) {
       retrieveAllUsersOrderedByName();
    }
 
@@ -41,7 +41,7 @@ public class UserListProducer {
       Root<User> user = criteria.from(User.class);
       // Swap criteria statements if you would like to try out type-safe criteria queries, a new
       // feature in JPA 2.0
-      // criteria.select(member).orderBy(cb.asc(member.get(Member_.name)));
+      // criteria.select(user).orderBy(cb.asc(user.get(User_.name)));
       criteria.select(user).orderBy(cb.asc(user.get("name")));
       users = em.createQuery(criteria).getResultList();
    }
