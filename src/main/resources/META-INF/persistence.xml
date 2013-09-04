@@ -10,12 +10,11 @@
       <jta-data-source>java:jboss/datasources/MySqlDS</jta-data-source>
       <properties>
          <!-- Properties for Hibernate -->
-<!--          <property name="dialect" value="org.hibernate.dialect.MySQLDialect"/> -->
-<!--          <property name="connection.driver_class" value="com.mysql.jdbc.Driver"/> -->
-<!--          <property name="connection.url" value="jdbc:mysql://127.0.0.1:3306/sports_dev"/> -->
-<!--          <property name="connection.username" value="root"/> -->
-<!--          <property name="connection.password" value="mysql"/> -->
-<!--          <property name="hibernate.hbm2ddl.auto" value="update" /> -->
+         <property name="connection.driver_class" value="com.mysql.jdbc.Driver"/>
+         <property name="connection.url" value="jdbc:mysql://127.0.0.1:3306/sports_dev"/>
+         <property name="connection.username" value="root"/>
+         <property name="connection.password" value="mysql"/>
+         <property name="hibernate.hbm2ddl.auto" value="update" />
          <property name="hibernate.show_sql" value="true" />
       </properties>
    </persistence-unit>
