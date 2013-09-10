@@ -1,76 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/default.xhtml">
-	<h:head>
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-	</h:head>
-	<ui:define name="content">
-		<h1>Welcome!</h1>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Login</title>
 
-		<h:form id="reg">
-			<h2>Register</h2>
-			<table>
-				<tr>
-					<th style="text-align: right;"><h:outputLabel for="name"
-							value="Name:" /></th>
-					<td><h:inputText id="name" value="#{newUser.name}" /> <h:message
-							for="name" errorClass="invalid" /></td>
-				</tr>
-				<tr>
-					<th style="text-align: right;"><h:outputLabel for="email"
-							value="Email:" /></th>
-					<td><h:inputText id="email" value="#{newUser.email}" /> <h:message
-							for="email" errorClass="invalid" /></td>
-				</tr>
-				<tr>
-					<th style="text-align: right;"><h:outputLabel
-							for="phoneNumber" value="Phone #:" /></th>
-					<td><h:inputText id="phoneNumber"
-							value="#{newUser.phoneNumber}" /> <h:message for="phoneNumber"
-							errorClass="invalid" /></td>
-				</tr>
-			</table>
-			<p>
-				<h:commandButton id="register" action="#{userRegistration.register}"
-					value="Register" />
-				<h:outputText value=" Registered!"
-					rendered="#{facesContext.postback and empty facesContext.messageList}"
-					style="color: green;" />
-			</p>
-		</h:form>
-		<h2>Users</h2>
-		<h:panelGroup rendered="#{empty users}">
-			<em>No registered users.</em>
-		</h:panelGroup>
-		<h:dataTable var="_user" value="#{users}"
-			rendered="#{not empty users}">
-			<h:column>
-				<f:facet name="header">Id</f:facet>
-                #{_user.id}
-            </h:column>
-			<h:column>
-				<f:facet name="header">Name</f:facet>
-                #{_user.name}
-            </h:column>
-			<h:column>
-				<f:facet name="header">Email</f:facet>
-                #{_user.email}
-            </h:column>
-			<h:column>
-				<f:facet name="header">Phone #</f:facet>
-                #{_user.phoneNumber}
-            </h:column>
-			<h:column>
-				<f:facet name="header">REST URL</f:facet>
-				<a href="#{request.contextPath}/rest/users/#{_user.id}">/rest/users/#{_user.id}</a>
-			</h:column>
-			<f:facet name="footer">
-                REST URL for all users: <a
-					href="#{request.contextPath}/rest/users">/rest/users</a>
-			</f:facet>
-		</h:dataTable>
-	</ui:define>
-</ui:composition>
+<link href="resources/css/login-box.css" rel="stylesheet"
+	type="text/css" />
+</head>
+
+<body>
+
+
+	<div style="padding: 100px 0 0 250px;">
+
+
+		<div id="login-box">
+
+			<h2 align="center">Login</h2>
+
+			<div id="login-box-name" style="margin-top: 20px;">Email:</div>
+			<div id="login-box-field" style="margin-top: 20px;">
+				<input name="q" class="form-login" title="Username" value=""
+					size="30" maxlength="2048" />
+			</div>
+			<div id="login-box-name">Password:</div>
+			<div id="login-box-field">
+				<input name="q" type="password" class="form-login" title="Password"
+					value="" size="30" maxlength="2048" />
+			</div>
+			<br /> <span class="login-box-options"><input type="checkbox"
+				name="1" value="1" /> Remember Me <a href="#"
+				style="margin-left: 30px;">Forgot password?</a></span> <br /> <br /> <a
+				href="#"><img src="resources/gfx/login-btn.png" width="103"
+				height="42"  style="margin-left: 120px;" align="middle" /></a>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
